@@ -33,5 +33,46 @@ class MyTheme {
         size: 24,
       ),
     ),
+    textTheme: TextTheme(
+      headlineMedium: TextStyle(
+        fontSize: 30,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 25,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 20,
+      ),
+    ),
+  );
+  static final ThemeData darkTheme = ThemeData(
+    primaryColor: darkPrimary,
+    scaffoldBackgroundColor: Colors.transparent,
+    appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(color: Colors.black),
+      color: Colors.transparent,
+      elevation: 0,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
+      ),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
+      backgroundColor: lightPrimary,
+      selectedIconTheme: IconThemeData(
+        color: Colors.black,
+        size: 36,
+      ),
+      selectedLabelStyle: TextStyle(color: Colors.black),
+      selectedItemColor: Colors.black,
+      unselectedIconTheme: IconThemeData(
+        color: Colors.white,
+        size: 24,
+      ),
+    ),
   );
 }
