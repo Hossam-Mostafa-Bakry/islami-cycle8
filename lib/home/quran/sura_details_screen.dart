@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/settings_provider.dart';
 import 'sura_details_screen_args.dart';
 import 'verses_widget.dart';
 
@@ -16,6 +18,8 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var settingsProvider = Provider.of<SettingsProvider>(context);
+
     // recive arguments
 
     SuraDetailsScreenArs args =
@@ -28,9 +32,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     if (verses.isEmpty) readFile(args.index + 1); // non blocking
 
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/images/main_background.png"),
+            image: AssetImage(settingsProvider.getMainBackGround()),
             fit: BoxFit.fill),
       ),
       child: Scaffold(
@@ -40,29 +44,29 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         ), //
         body: verses.isEmpty
             ? Center(
-                child: CircularProgressIndicator(
-                  color: Theme.of(context).primaryColor,
-                ),
-              )
+          child: CircularProgressIndicator(
+            color: Theme.of(context).primaryColor,
+          ),
+        )
             : Card(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 65),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                child: ListView.separated(
-                  itemBuilder: (context, index) =>
-                      VersesWidget(verses[index], index + 1),
-                  separatorBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Divider(
-                      color: Theme.of(context).primaryColor,
-                      height: 5,
-                    ),
-                  ),
-                  itemCount: verses.length,
-                ),
+          margin:
+          const EdgeInsets.symmetric(horizontal: 30, vertical: 65),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          child: ListView.separated(
+            itemBuilder: (context, index) =>
+                VersesWidget(verses[index], index + 1),
+            separatorBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Divider(
+                color: Theme.of(context).primaryColor,
+                height: 5,
               ),
+            ),
+            itemCount: verses.length,
+          ),
+        ),
       ),
     );
   }
