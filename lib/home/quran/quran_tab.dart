@@ -19,8 +19,8 @@ class QuranTab extends StatelessWidget {
             child: Image.asset("assets/images/quran_header_image.png"),
           ),
           Divider(
-            color: theme.primaryColor,
-            thickness: 1.5,
+            color: theme.accentColor,
+            thickness: 1.2,
             height: 5,
           ),
           const Text(
@@ -31,8 +31,8 @@ class QuranTab extends StatelessWidget {
             ),
           ),
           Divider(
-            color: theme.primaryColor,
-            thickness: 1.5,
+            color: theme.accentColor,
+            thickness: 1.2,
             height: 5,
           ),
           Expanded(
@@ -45,8 +45,8 @@ class QuranTab extends StatelessWidget {
               separatorBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80.0),
                 child: Divider(
-                  color: theme.primaryColor,
-                  thickness: .5,
+                  color: theme.accentColor,
+                  thickness: 1.2,
                 ),
               ),
               itemCount: names.length,

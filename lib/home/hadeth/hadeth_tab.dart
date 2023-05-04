@@ -5,12 +5,17 @@ import 'package:islami/home/hadeth/hadeth_details.dart';
 
 import 'hadeth_title_widget.dart';
 
-class HadethTab extends StatelessWidget {
+class HadethTab extends StatefulWidget {
+  @override
+  State<HadethTab> createState() => _HadethTabState();
+}
+
+class _HadethTabState extends State<HadethTab> {
   List<HadethDataClass> allHadeth = [];
 
   @override
   Widget build(BuildContext context) {
-    loadHadethFile();
+    if (allHadeth.isEmpty) loadHadethFile();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -29,7 +34,7 @@ class HadethTab extends StatelessWidget {
             separatorBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50.0),
               child: Divider(
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).accentColor,
                 thickness: 1.2,
               ),
             ),
@@ -61,5 +66,6 @@ class HadethTab extends StatelessWidget {
       // String content = singleHadethLines.join("\n");
     }
     allHadeth = list;
+    setState(() {});
   }
 }
